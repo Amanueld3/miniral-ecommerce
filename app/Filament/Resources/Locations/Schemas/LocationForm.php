@@ -1,16 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\Categories\Schemas;
+namespace App\Filament\Resources\Locations\Schemas;
 
-use Dom\Text;
 use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 use Filament\Schemas\Components\Utilities\Set;
 use Illuminate\Support\Str;
 
-class CategoryForm
+class LocationForm
 {
     public static function configure(Schema $schema): Schema
     {
@@ -26,7 +24,7 @@ class CategoryForm
                 TextInput::make('slug')
                     ->label('Slug')
                     ->disabled()
-                    ->dehydrated() // still save it even though it's disabled
+                    ->dehydrated()
                     ->required()
                     ->unique(ignoreRecord: true),
                 RichEditor::make('description')
