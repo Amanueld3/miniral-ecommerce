@@ -8,12 +8,16 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('created_by')->constrained('users')->cascadeOnDelete();
+            $table->foreignUuid('category_id')->constrained('categories')->cascadeOnDelete();
+            $table->foreignUuid('location_id')->constrained('locations')->cascadeOnDelete();
             $table->string('name');
             $table->string('slug')->unique();
+            $table->string('price')->default(0);
             $table->text('description')->nullable();
+            $table->json('detail')->nullable();
             $table->unsignedBigInteger('status')->default(0);
             $table->timestamps();
             $table->softDeletes();
@@ -22,6 +26,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('products');
     }
 };

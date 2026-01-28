@@ -14,8 +14,14 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->text('description')->nullable();
+            $table->unsignedBigInteger('status')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('locations');
     }
 };

@@ -12,8 +12,14 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->foreignUuid('created_by')->constrained('users')->cascadeOnDelete();
             $table->string('name');
+            $table->unsignedBigInteger('status')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('tags');
     }
 };
