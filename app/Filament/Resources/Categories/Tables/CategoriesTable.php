@@ -23,7 +23,7 @@ class CategoriesTable
                 SpatieMediaLibraryImageColumn::make('image')
                     ->label('Image')
                     ->collection('categories')
-                    // ->disk('public')
+                    ->disk('public')
                     ->circular()
                     ->width(44),
                 TextColumn::make('name')
