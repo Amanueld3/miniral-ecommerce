@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Categories\Schemas;
 
 use Dom\Text;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
@@ -23,6 +24,13 @@ class CategoryForm
                     ->afterStateUpdated(function (Set $set, ?string $state) {
                         $set('slug', Str::slug($state ?? ''));
                     }),
+
+                SpatieMediaLibraryFileUpload::make('image')
+                    ->label('Image')
+                    ->collection('categories')
+                    ->disk('public')
+                    ->image()
+                    ->nullable(),
                 TextInput::make('slug')
                     ->label('Slug')
                     ->disabled()

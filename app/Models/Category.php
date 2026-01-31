@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Category extends Model
+class Category extends Model implements HasMedia
 {
-    use HasUuids, SoftDeletes;
+    use HasUuids, SoftDeletes, InteractsWithMedia;
 
     protected $guarded = [];
 
@@ -18,6 +20,7 @@ class Category extends Model
     {
         return $this->belongsTo(User::class, 'created_by');
     }
+
     protected static function boot()
     {
         parent::boot();

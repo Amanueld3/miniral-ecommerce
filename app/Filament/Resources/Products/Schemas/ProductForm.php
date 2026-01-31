@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Products\Schemas;
 
 use App\Models\Tag;
 use Filament\Forms\Components\KeyValue;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TagsInput;
@@ -74,8 +75,8 @@ class ProductForm
                         ])
                         ->columnSpanFull(),
 
-                    Textarea::make('description')
-                        ->rows(5)
+                    RichEditor::make('description')
+                        // ->rows(5)
                         ->nullable()
                         ->columnSpanFull(),
                 ]),
