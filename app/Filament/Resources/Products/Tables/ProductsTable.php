@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Products\Tables;
 
+use App\Filament\Resources\Products\ProductResource;
+use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -107,6 +109,9 @@ class ProductsTable
                 TrashedFilter::make(),
             ])
             ->recordActions([
+                Action::make('activities')
+                    ->icon('heroicon-o-clock')
+                    ->url(fn($record) => ProductResource::getUrl('activities', ['record' => $record])),
                 EditAction::make(),
             ])
             ->toolbarActions([
