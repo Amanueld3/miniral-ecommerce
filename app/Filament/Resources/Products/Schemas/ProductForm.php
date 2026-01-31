@@ -107,6 +107,7 @@ class ProductForm
                 ->columns(2)
                 ->components([
                     SpatieMediaLibraryFileUpload::make('thumbnail')
+                        ->disk('public')
                         ->collection('thumbnail')
                         ->image()
                         ->imageEditor()
@@ -114,6 +115,7 @@ class ProductForm
                         ->required(),
 
                     SpatieMediaLibraryFileUpload::make('images')
+                        ->disk('public')
                         ->collection('images')
                         ->multiple()
                         ->image()

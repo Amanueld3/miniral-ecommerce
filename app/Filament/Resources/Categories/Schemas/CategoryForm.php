@@ -28,7 +28,7 @@ class CategoryForm
                 SpatieMediaLibraryFileUpload::make('image')
                     ->label('Image')
                     ->collection('categories')
-                    ->disk('public')
+                    // ->disk('public')
                     ->image()
                     ->nullable(),
                 TextInput::make('slug')
