@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('price')->default(0);
+            $table->string('purity')->default(0);
             $table->text('description')->nullable();
             $table->json('detail')->nullable();
             $table->unsignedBigInteger('status')->default(0);

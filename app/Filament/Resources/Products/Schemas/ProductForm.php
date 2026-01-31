@@ -46,10 +46,21 @@ class ProductForm
                         ->required()
                         ->unique(ignoreRecord: true),
 
+
                     TextInput::make('price')
                         ->numeric()
                         ->default(0)
                         ->required(),
+
+                    TextInput::make('purity')
+                        ->label('Purity (%)')
+                        ->numeric()
+                        ->minValue(1)
+                        ->maxValue(100)
+                        ->step(1)
+                        ->default(100)
+                        ->required()
+                        ->rules(['integer', 'min:1', 'max:100']),
 
                     Select::make('status')
                         ->options([0 => 'Draft', 1 => 'Active', 2 => 'Inactive'])

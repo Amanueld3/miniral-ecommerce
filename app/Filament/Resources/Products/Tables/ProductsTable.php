@@ -48,6 +48,10 @@ class ProductsTable
                     ->sortable()
                     ->alignEnd(),
 
+                TextColumn::make('purity')
+                    ->sortable()
+                    ->alignEnd(),
+
                 TextColumn::make('tags.name')
                     ->label('Tags')
                     ->badge()
